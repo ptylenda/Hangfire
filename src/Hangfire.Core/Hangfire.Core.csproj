@@ -82,6 +82,8 @@
     <Compile Include="BackgroundJobServer.cs" />
     <Compile Include="BackgroundJobServerOptions.cs" />
     <Compile Include="Client\CoreBackgroundJobFactory.cs" />
+    <Compile Include="Filters\JobContext.cs" />
+    <Compile Include="IJob.cs" />
     <Compile Include="Obsolete\Job.Obsolete.cs" />
     <Compile Include="Common\TypeExtensions.cs" />
     <Compile Include="Dashboard\OwinRequestExtensions.cs" />

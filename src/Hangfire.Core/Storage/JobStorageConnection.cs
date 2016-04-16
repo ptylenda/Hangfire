@@ -69,6 +69,7 @@ namespace Hangfire.Storage
         // Hashes
         public abstract void SetRangeInHash(string key, IEnumerable<KeyValuePair<string, string>> keyValuePairs);
         public abstract Dictionary<string, string> GetAllEntriesFromHash(string key);
+        public abstract void SetJobStatus(string jobId, string status);
 
         public virtual string GetValueFromHash([NotNull] string key, [NotNull] string name)
         {

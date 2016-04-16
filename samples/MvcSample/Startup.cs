@@ -14,13 +14,14 @@ namespace MvcSample
         public void Configuration(IAppBuilder app)
         {
             GlobalConfiguration.Configuration
-                .UseSqlServerStorage(@"Server=.\sqlexpress;Database=Hangfire.Sample;Trusted_Connection=True;")
-                .UseMsmqQueues(@".\Private$\hangfire{0}", "default", "critical")
+                .UseSqlServerStorage(@"Server=.;Database=Hangfire;Trusted_Connection=True;")
+                //.UseMsmqQueues(@".\Private$\hangfire{0}", "default", "critical")
                 .UseDashboardMetric(SqlServerStorage.ActiveConnections)
                 .UseDashboardMetric(SqlServerStorage.TotalConnections)
                 .UseDashboardMetric(DashboardMetrics.FailedCount);
             
             app.UseHangfireDashboard();
+            app.UseHangfireServer();
         }
     }
 }

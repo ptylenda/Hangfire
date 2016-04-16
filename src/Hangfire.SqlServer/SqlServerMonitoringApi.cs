@@ -286,7 +286,8 @@ select * from [{0}].State where JobId = @id order by Id desc", _storage.GetSchem
                         ExpireAt = job.ExpireAt,
                         Job = DeserializeJob(job.InvocationData, job.Arguments),
                         History = history,
-                        Properties = parameters
+                        Properties = parameters,
+                        Status = job.Status
                     };
                 }
             });

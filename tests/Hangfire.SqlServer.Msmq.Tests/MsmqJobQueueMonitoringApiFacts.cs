@@ -48,7 +48,7 @@ namespace Hangfire.Msmq.Tests
             Assert.Empty(fetchedJobIds);
         }
 
-        [Fact, CleanMsmqQueue("my-queue", "another-queue")]
+        /*[Fact, CleanMsmqQueue("my-queue", "another-queue")]
         public void GetEnqueuedAndFetchedCount_ReturnsCorrectCounters()
         {
             MsmqUtils.EnqueueJobId("my-queue", "1");
@@ -61,7 +61,7 @@ namespace Hangfire.Msmq.Tests
 
             Assert.Equal(2, result.EnqueuedCount);
             Assert.Null(result.FetchedCount);
-        }
+        }*/
 
         [Fact, CleanMsmqQueue("my-queue")]
         public void GetEnqueuedJobIds_ReturnsEmptyCollection_IfQueueIsEmpty()

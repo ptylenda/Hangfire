@@ -64,15 +64,15 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Hangfire.Core\Hangfire.Core.csproj">
       <Project>{c995ea9e-56ee-4951-8260-d94260a7f4c2}</Project>
-      <Name>Hangfire.Core</Name>
+      <Name>Hangfire.Plus.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Hangfire.SqlServer.Msmq\Hangfire.SqlServer.Msmq.csproj">
       <Project>{762be479-0aec-47e0-8f9c-34fa54641749}</Project>
-      <Name>Hangfire.SqlServer.Msmq</Name>
+      <Name>Hangfire.Plus.SqlServer.Msmq</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Hangfire.SqlServer\Hangfire.SqlServer.csproj">
       <Project>{a523c0e3-097d-4869-977f-15a717ea3e83}</Project>
-      <Name>Hangfire.SqlServer</Name>
+      <Name>Hangfire.Plus.SqlServer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

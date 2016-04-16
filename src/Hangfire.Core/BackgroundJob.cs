@@ -106,6 +106,16 @@ namespace Hangfire
             return client.Enqueue(methodCall);
         }
 
+        public static string Enqueue(IJob jobInstance)
+        {
+            return Enqueue(() => jobInstance.Run());
+        }
+
+        public static string Enqueue<T>(IJob<T> jobInstance)
+        {
+            return Enqueue(() => jobInstance.Run());
+        }
+
         /// <summary>
         /// Creates a new background job based on a specified static method
         /// call expression and schedules it to be enqueued after a given delay.

@@ -1,19 +1,37 @@
 ﻿@* Generator: Template TypeVisibility: Internal GeneratePrettyNames: True *@
 @using System
+@using System.Linq
 @using Hangfire.Common
 @using Hangfire.Dashboard
 @using Hangfire.Dashboard.Pages
 @using Hangfire.States
+@using Newtonsoft.Json
+@using Newtonsoft.Json.Converters
 @inherits RazorPage
 @{
     var monitor = Storage.GetMonitoringApi();
     var job = monitor.JobDetails(JobId.ToString());
+    var jobStatus = "None";
+
 
     string title = null;
 
     if (job != null)
     {
         title = job.Job != null ? Html.JobName(job.Job) : null;
+
+        if (job.Status != null)
+        {
+            try
+            {
+                dynamic parsedJson = JsonConvert.DeserializeObject(job.Status);
+                jobStatus = JsonConvert.SerializeObject(parsedJson, Formatting.Indented);
+            }
+            catch (Exception)
+            {
+                jobStatus = job.Status;
+            }
+        }
     }
 
     title = title ?? "Job";
@@ -109,6 +127,14 @@
                             </dl>
                         </div>
                     }
+                </div>
+            </div>
+
+
+            <h3>Status</h3>
+            <div class="job-history">
+                <div class="job-history-body">
+                    <span style="white-space: pre-wrap">@jobStatus</span>
                 </div>
             </div>
 

@@ -284,6 +284,22 @@ when not matched then insert ([Key], Field, Value) values (Source.[Key], Source.
             });
         }
 
+        public override void SetJobStatus(string jobId, string status)
+        {
+            if (jobId == null) throw new ArgumentNullException("jobId");
+            if (status == null) throw new ArgumentNullException("status");
+
+            _storage.UseConnection(connection =>
+            {
+                connection.Execute(
+                    string.Format(@";merge [{0}].Job with (holdlock) as Target "
+                    + @"using (VALUES (@jobId, @status)) as Source (Id, Status) "
+                    + @"on Target.Id = Source.Id "
+                    + @"when matched then update set Status = Source.Status;", _storage.GetSchemaName()),
+                    new {jobId, status});
+            });
+        }
+
         public override void AnnounceServer(string serverId, ServerContext context)
         {
             if (serverId == null) throw new ArgumentNullException("serverId");

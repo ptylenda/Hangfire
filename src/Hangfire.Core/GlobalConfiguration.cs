@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU Lesser General Public 
 // License along with Hangfire. If not, see <http://www.gnu.org/licenses/>.
 
+using Hangfire.Filters;
+
 namespace Hangfire
 {
     public class GlobalConfiguration : IGlobalConfiguration
@@ -27,6 +29,7 @@ namespace Hangfire
 
         internal GlobalConfiguration()
         {
+            this.UseFilter(new JobContext());
         }
     }
 }
